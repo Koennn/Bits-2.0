@@ -1,0 +1,14 @@
+name: Bits-2.0
+version: 2.0-SNAPSHOT
+main: me.koenn.bits.Bits
+authors: [Koenn]
+
+commands:
+  donate:
+    description: "Support the server by donating!"
+    aliases: "d"
+    usage: "/donate"
+  bed:
+    description: "Teleport to your bed."
+    aliases: "b"
+    usage: "/b"
