@@ -50,6 +50,10 @@ public class FileManager {
         return this.configuration.get(path);
     }
 
+    public boolean has(String path) {
+        return this.configuration.contains(path);
+    }
+
     public Set<String> getKeys(String path) {
         if (this.configuration.getConfigurationSection(path) == null) {
             return null;

@@ -15,7 +15,11 @@ public class WarpsCommand implements ICommand {
 
     @Override
     public String execute(CPlayer cPlayer, String[] args) {
-        WarpManager.INSTANCE.printWarps(cPlayer.getPlayer());
+        if (args.length == 1) {
+            WarpManager.INSTANCE.printWarps(cPlayer.getPlayer(), args[0]);
+        } else {
+            WarpManager.INSTANCE.printWarps(cPlayer.getPlayer(), null);
+        }
         return null;
     }
 

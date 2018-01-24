@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.json.simple.JSONObject;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -149,5 +150,7 @@ public class CPlayer {
 
     public void join() {
         this.updateName();
+
+        this.set("lastPlayed", new Date().getTime());
     }
 }

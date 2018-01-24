@@ -49,6 +49,7 @@ public class CommandAPI implements CommandExecutor, TabCompleter {
         registerCommand(new WhoisCommand());
         registerCommand(new RandomTeleportCommand());
         registerCommand(new PlayerHeadCommand());
+        registerCommand(new SeenCommand());
     }
 
     @Override

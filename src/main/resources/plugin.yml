@@ -52,3 +52,7 @@ commands:
     description: "Gives you a playerhead with a certain name."
     aliases: "ph"
     usage: "/playerhead <player>"
+  seen:
+    description: "View when a player last played."
+    aliases: "s"
+    usage: "/s <player>"
