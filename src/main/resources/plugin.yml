@@ -56,3 +56,7 @@ commands:
     description: "View when a player last played."
     aliases: "s"
     usage: "/s <player>"
+  hat:
+    description: "Set the item you currently hold as your hat."
+    aliases: "h"
+    usage: "/hat"

@@ -32,6 +32,7 @@ public class Ref {
     public static final String POSITIVE_WARP_DELETED = cc(POSITIVE + "Warp successfully deleted.");
     public static final String POSITIVE_NICK_SET = cc(POSITIVE + "Nickname set to \"{name}\".");
     public static final String POSITIVE_SEEN_ONLINE = cc(POSITIVE + "{player} is currently online.");
+    public static final String POSITIVE_HAT = cc(POSITIVE + "Enjoy your new hat!");
 
     public static final String NO_BED = cc(NEGATIVE + "You don't have a bed.");
     public static final String NEGATIVE_PERMISSION = cc(NEGATIVE + "Not enough permissions.");
@@ -51,6 +52,7 @@ public class Ref {
     public static final String NEGATIVE_RTP = cc(NEGATIVE + "You need to wait 6 hours between each random teleport.");
     public static final String NEGATIVE_PLAYERHEAD = cc(NEGATIVE + "It costs 1 diamond to get a playerhead.");
     public static final String NEGATIVE_SEEN_UNKNOWN = cc(NEGATIVE + "The last played date of this player is currently unknown.");
+    public static final String NEGATIVE_EMPTY_HAND = cc(NEGATIVE + "You don't have anything in your hand.");
 
     public static final String PERM_BYPASSCOOLDOWN = "bits.bypasscooldown";
 
