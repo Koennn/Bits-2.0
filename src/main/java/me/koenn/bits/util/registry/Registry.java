@@ -48,7 +48,7 @@ public final class Registry<T> {
         return this.registeredObjects.get(random.nextInt(this.registeredObjects.size()));
     }
 
-    public List<T> getRegisteredObjects() {
+    public List<T> getAll() {
         return registeredObjects;
     }
 

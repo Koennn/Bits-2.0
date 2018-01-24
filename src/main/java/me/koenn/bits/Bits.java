@@ -1,8 +1,8 @@
 package me.koenn.bits;
 
 import me.koenn.bits.command.CommandAPI;
-import me.koenn.bits.listeners.SleepListener;
 import me.koenn.bits.player.CPlayerRegistry;
+import me.koenn.bits.warps.WarpManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -35,10 +35,12 @@ public final class Bits extends JavaPlugin {
         cPlayerRegistry = new CPlayerRegistry();
         CPlayerRegistry.loadCPlayers();
 
+        WarpManager.load();
+
         commandAPI = new CommandAPI();
         CommandAPI.registerCommands();
 
-        Bukkit.getPluginManager().registerEvents(new SleepListener(), this);
+        //Bukkit.getPluginManager().registerEvents(new SleepListener(), this);
     }
 
     @Override

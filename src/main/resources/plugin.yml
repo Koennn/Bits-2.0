@@ -12,3 +12,43 @@ commands:
     description: "Teleport to your bed."
     aliases: "b"
     usage: "/b"
+  colorname:
+    description: "Set a colored name."
+    aliases: "cn"
+    usage: "/cn <color>"
+  rules:
+    description: "See the server rules"
+    aliases: "r"
+    usage: "/rules"
+  beam:
+    description: "Beams (teleports) you to a player."
+    usage: "/beam <player>"
+  warp:
+    description: "Warp to a location."
+    usage: "/warp <warp>"
+  warps:
+    description: "View all warps."
+    aliases: "ws"
+    usage: "/warps"
+  delwarp:
+    description: "Delete a warp."
+    aliases: "dw"
+    usage: "/delwarp <player>"
+  setwarp:
+    description: "Set a new warp."
+    aliases: "sw"
+    usage: "/setwarp <player>"
+  nick:
+    description: "Set a custom nickname."
+    usage: "/nick <name>"
+  whois:
+    description: "Get the player behind a nickname."
+    usage: "/whois <player>"
+  randomteleport:
+    description: "Teleports you to a random location."
+    aliases: "rtp"
+    usage: "/rtp"
+  playerhead:
+    description: "Gives you a playerhead with a certain name."
+    aliases: "ph"
+    usage: "/playerhead <player>"

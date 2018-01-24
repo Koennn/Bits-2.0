@@ -8,7 +8,8 @@ public interface ICommand {
 
     String getName();
 
-    String execute(CPlayer cPlayer, String[] args);
+    String
+    execute(CPlayer cPlayer, String[] args);
 
-    List<String> getTabCompleteOptions();
+    List<String> getTabCompleteOptions(CPlayer cPlayer, String argument);
 }

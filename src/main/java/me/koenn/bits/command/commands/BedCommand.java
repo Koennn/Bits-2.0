@@ -30,7 +30,7 @@ public class BedCommand implements ICommand {
     }
 
     @Override
-    public List<String> getTabCompleteOptions() {
+    public List<String> getTabCompleteOptions(CPlayer cPlayer, String argument) {
         return null;
     }
 }

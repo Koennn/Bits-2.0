@@ -1,8 +1,11 @@
 package me.koenn.bits.command;
 
 import me.koenn.bits.Bits;
-import me.koenn.bits.command.commands.BedCommand;
-import me.koenn.bits.command.commands.DonateCommand;
+import me.koenn.bits.command.commands.*;
+import me.koenn.bits.command.commands.warps.DelWarpCommand;
+import me.koenn.bits.command.commands.warps.SetWarpCommand;
+import me.koenn.bits.command.commands.warps.WarpCommand;
+import me.koenn.bits.command.commands.warps.WarpsCommand;
 import me.koenn.bits.player.CPlayer;
 import me.koenn.bits.player.CPlayerRegistry;
 import me.koenn.bits.util.registry.Registry;
@@ -16,6 +19,7 @@ import org.bukkit.event.Listener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CommandAPI implements CommandExecutor, TabCompleter {
 
@@ -34,6 +38,17 @@ public class CommandAPI implements CommandExecutor, TabCompleter {
     public static void registerCommands() {
         registerCommand(new DonateCommand());
         registerCommand(new BedCommand());
+        registerCommand(new ColorNameCommand());
+        registerCommand(new RulesCommand());
+        registerCommand(new BeamCommand());
+        registerCommand(new WarpCommand());
+        registerCommand(new WarpsCommand());
+        registerCommand(new SetWarpCommand());
+        registerCommand(new DelWarpCommand());
+        registerCommand(new NickCommand());
+        registerCommand(new WhoisCommand());
+        registerCommand(new RandomTeleportCommand());
+        registerCommand(new PlayerHeadCommand());
     }
 
     @Override
@@ -48,7 +63,7 @@ public class CommandAPI implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        CMD_REGISTRY.getRegisteredObjects().stream()
+        CMD_REGISTRY.getAll().stream()
                 .filter(iCommand -> iCommand.getName().equalsIgnoreCase(command.getName()))
                 .findFirst().ifPresent(iCommand -> cPlayer.sendMessage(iCommand.execute(cPlayer, args)));
         return true;
@@ -56,13 +71,29 @@ public class CommandAPI implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        ICommand cmd = CMD_REGISTRY.getRegisteredObjects().stream()
+        CPlayer cPlayer = CPlayerRegistry.getCPlayer(((Player) sender).getUniqueId());
+        if (cPlayer == null) {
+            return new ArrayList<>();
+        }
+
+        ICommand cmd = CMD_REGISTRY.getAll().stream()
                 .filter(iCommand -> iCommand.getName().equalsIgnoreCase(command.getName()))
                 .findFirst().orElse(null);
 
-        if (cmd == null || cmd.getTabCompleteOptions() == null) {
+        String argument = (args.length > 0 && !args[0].trim().isEmpty()) ? args[0] : null;
+
+        if (cmd == null || cmd.getTabCompleteOptions(cPlayer, argument) == null) {
             return new ArrayList<>();
         }
-        return cmd.getTabCompleteOptions();
+
+        List<String> options = cmd.getTabCompleteOptions(cPlayer, argument);
+        if (argument == null) {
+            return options;
+        } else {
+            return options.stream()
+                    .map(String::toLowerCase)
+                    .filter(option -> option.startsWith(argument.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
     }
 }

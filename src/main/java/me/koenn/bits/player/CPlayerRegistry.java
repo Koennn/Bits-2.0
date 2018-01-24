@@ -51,6 +51,7 @@ public final class CPlayerRegistry implements Listener {
     public static void registerCPlayer(CPlayer cPlayer) {
         for (CPlayer player : Bits.getCPlayerRegistry().cPlayers) {
             if (player.getUUID().equals(cPlayer.getUUID())) {
+                player.join();
                 return;
             }
         }
@@ -73,6 +74,19 @@ public final class CPlayerRegistry implements Listener {
             }
         }
         return null;
+    }
+
+    public static CPlayer getCPlayerByNick(String nick) {
+        for (CPlayer player : Bits.getCPlayerRegistry().cPlayers) {
+            if (player.getNickname() != null && player.getNickname().equals(nick)) {
+                return player;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<CPlayer> getCPlayers() {
+        return Bits.getCPlayerRegistry().cPlayers;
     }
 
     public void savePlayers() {

@@ -108,4 +108,46 @@ public class CPlayer {
     public PlayerData getPlayerData() {
         return playerData;
     }
+
+    public boolean isDonor() {
+        return Boolean.parseBoolean(this.playerData.getOrDefault("donor", String.valueOf(false)));
+    }
+
+    public boolean isGuard() {
+        return Boolean.parseBoolean(this.playerData.getOrDefault("guard", String.valueOf(false)));
+    }
+
+    private void updateName() {
+        Player player = this.getPlayer();
+        String nickname = this.getNickname();
+        String name = (nickname != null) ? "~" + nickname : player.getName();
+
+        player.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.getPrefix() + name + "&r"));
+        player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', this.getPrefix() + name + "&r"));
+    }
+
+    public String getNickname() {
+        String nickname = this.playerData.getOrDefault("nick", "-");
+        return nickname.equals("-") ? null : nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.set("nick", nickname == null ? "-" : nickname);
+
+        this.updateName();
+    }
+
+    public String getPrefix() {
+        return this.playerData.getOrDefault("prefix", "");
+    }
+
+    public void setPrefix(String prefix) {
+        this.set("prefix", prefix == null ? "" : prefix);
+
+        this.updateName();
+    }
+
+    public void join() {
+        this.updateName();
+    }
 }

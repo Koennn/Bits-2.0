@@ -1,21 +1,22 @@
-package me.koenn.bits.command.commands;
+package me.koenn.bits.command.commands.warps;
 
-import me.koenn.bits.Ref;
 import me.koenn.bits.command.ICommand;
 import me.koenn.bits.player.CPlayer;
+import me.koenn.bits.warps.WarpManager;
 
 import java.util.List;
 
-public class DonateCommand implements ICommand {
+public class WarpsCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "donate";
+        return "warps";
     }
 
     @Override
     public String execute(CPlayer cPlayer, String[] args) {
-        return Ref.DONATE;
+        WarpManager.INSTANCE.printWarps(cPlayer.getPlayer());
+        return null;
     }
 
     @Override
