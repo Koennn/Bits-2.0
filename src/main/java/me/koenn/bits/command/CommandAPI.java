@@ -51,6 +51,12 @@ public class CommandAPI implements CommandExecutor, TabCompleter {
         registerCommand(new PlayerHeadCommand());
         registerCommand(new SeenCommand());
         registerCommand(new HatCommand());
+        registerCommand(new DiscordCommand());
+        registerCommand(new GuardCommand());
+        registerCommand(new DonorCommand());
+        registerCommand(new GuardsCommand());
+        registerCommand(new DonorsCommand());
+        registerCommand(new ChangelogCommand());
     }
 
     @Override
@@ -76,6 +82,10 @@ public class CommandAPI implements CommandExecutor, TabCompleter {
         CPlayer cPlayer = CPlayerRegistry.getCPlayer(((Player) sender).getUniqueId());
         if (cPlayer == null) {
             return new ArrayList<>();
+        }
+
+        if (args.length > 1) {
+            return Bukkit.getOnlinePlayers().stream().map(Player::getName).collect(Collectors.toList());
         }
 
         ICommand cmd = CMD_REGISTRY.getAll().stream()

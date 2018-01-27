@@ -44,7 +44,7 @@ public class ColorNameCommand implements ICommand {
 
         if (args.length != 1 || args[0].equalsIgnoreCase("list")) {
             cPlayer.sendMessage(Ref.HEADER_COLORS);
-            cPlayer.sendMessage(Ref.CLICK_COLOR);
+            cPlayer.sendMessage(Ref.NEUTRAL_CLICK_COLOR);
             COLORS.stream()
                     .map(String::toLowerCase)
                     .forEach(color -> new FancyMessage(color)

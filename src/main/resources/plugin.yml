@@ -1,5 +1,5 @@
 name: Bits-2.0
-version: 2.0-SNAPSHOT
+version: 2.1
 main: me.koenn.bits.Bits
 authors: [Koenn]
 
@@ -60,3 +60,24 @@ commands:
     description: "Set the item you currently hold as your hat."
     aliases: "h"
     usage: "/hat"
+  discord:
+    description: "View the discord address."
+    usage: "/discord"
+  guard:
+    description: "Staff only."
+    usage: "/guard <set/del> <player>"
+  donor:
+    description: "Staff only."
+    usage: "/donor <set/del> <player>"
+  guards:
+    description: "View all guards."
+    aliases: "gs"
+    usage: "/guards"
+  donors:
+    description: "View all donors."
+    aliases: "ds"
+    usage: "/donors"
+  changelog:
+    description: "View the latest changes."
+    aliases: "cl"
+    usage: "/changelog"

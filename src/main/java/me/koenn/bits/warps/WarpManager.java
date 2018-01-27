@@ -87,7 +87,7 @@ public class WarpManager {
     public void printWarps(Player player, String category) {
         if (category == null) {
             player.sendMessage(Ref.HEADER_CATEGORIES);
-            player.sendMessage(Ref.CLICK_CATEGORY);
+            player.sendMessage(Ref.NEUTRAL_CLICK_CATEGORY);
             List<String> categories = new ArrayList<>();
             this.warps.stream()
                     .filter(Warp::hasCategory)
@@ -104,10 +104,19 @@ public class WarpManager {
                     .command(String.format("/warps %s", cat))
                     .send(player));
         } else {
+            if (category.equalsIgnoreCase("all")) {
+                player.sendMessage(Ref.HEADER_WARPS
+                        .replace("{category}", "All warps")
+                );
+                player.sendMessage(Ref.NEUTRAL_CLICK_WARP);
+                this.printWarps(player, this.warps);
+                return;
+            }
+
             player.sendMessage(Ref.HEADER_WARPS
                     .replace("{category}", category)
             );
-            player.sendMessage(Ref.CLICK_WARP);
+            player.sendMessage(Ref.NEUTRAL_CLICK_WARP);
             if (category.equalsIgnoreCase("other")) {
                 this.printWarps(player, this.warps.stream()
                         .filter(warp -> !warp.hasCategory())

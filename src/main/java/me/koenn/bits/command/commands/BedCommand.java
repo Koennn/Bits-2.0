@@ -22,7 +22,7 @@ public class BedCommand implements ICommand {
         Location bed = player.getBedSpawnLocation();
 
         if (bed == null) {
-            return Ref.NO_BED;
+            return Ref.NEGATIVE_NO_BED;
         }
 
         Teleporter.teleport(player, bed);

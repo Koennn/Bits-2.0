@@ -3,19 +3,25 @@ package me.koenn.bits.command.commands;
 import me.koenn.bits.Ref;
 import me.koenn.bits.command.ICommand;
 import me.koenn.bits.player.CPlayer;
+import me.koenn.bits.player.CPlayerRegistry;
 
 import java.util.List;
 
-public class DonateCommand implements ICommand {
+public class GuardsCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "donate";
+        return "guards";
     }
 
     @Override
     public String execute(CPlayer cPlayer, String[] args) {
-        return Ref.POSITIVE_DONATE;
+        cPlayer.sendMessage(Ref.HEADER_GUARDS);
+        CPlayerRegistry.getCPlayers().stream()
+                .filter(CPlayer::isGuard)
+                .map(CPlayer::getName)
+                .forEach(cPlayer::sendMessage);
+        return null;
     }
 
     @Override

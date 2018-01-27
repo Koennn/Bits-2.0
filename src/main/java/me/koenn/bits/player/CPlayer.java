@@ -118,6 +118,10 @@ public class CPlayer {
         return Boolean.parseBoolean(this.playerData.getOrDefault("guard", String.valueOf(false)));
     }
 
+    public String getLatestVersion() {
+        return this.playerData.getOrDefault("version", "1.0");
+    }
+
     private void updateName() {
         Player player = this.getPlayer();
         String nickname = this.getNickname();

@@ -103,7 +103,7 @@ public final class CPlayerRegistry implements Listener {
         manager.saveBodyToFile();
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
         CPlayerRegistry.registerCPlayer(new CPlayer(event.getPlayer().getUniqueId()));
         Bits.getCPlayerRegistry().savePlayers();

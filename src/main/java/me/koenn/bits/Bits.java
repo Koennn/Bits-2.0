@@ -1,7 +1,9 @@
 package me.koenn.bits;
 
 import me.koenn.bits.command.CommandAPI;
+import me.koenn.bits.listeners.*;
 import me.koenn.bits.player.CPlayerRegistry;
+import me.koenn.bits.util.PermissionHelper;
 import me.koenn.bits.warps.WarpManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,7 +42,14 @@ public final class Bits extends JavaPlugin {
         commandAPI = new CommandAPI();
         CommandAPI.registerCommands();
 
-        //Bukkit.getPluginManager().registerEvents(new SleepListener(), this);
+        Bukkit.getPluginManager().registerEvents(new SleepListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ChunkUnloadListener(), this);
+        Bukkit.getPluginManager().registerEvents(new DamageListener(), this);
+        Bukkit.getPluginManager().registerEvents(new FishSlapListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+        Bukkit.getPluginManager().registerEvents(new SignListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PermissionHelper(), this);
+        Bukkit.getPluginManager().registerEvents(new KallumsKipper(), this);
     }
 
     @Override

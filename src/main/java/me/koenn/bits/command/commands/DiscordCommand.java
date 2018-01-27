@@ -6,16 +6,16 @@ import me.koenn.bits.player.CPlayer;
 
 import java.util.List;
 
-public class DonateCommand implements ICommand {
+public class DiscordCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "donate";
+        return "discord";
     }
 
     @Override
     public String execute(CPlayer cPlayer, String[] args) {
-        return Ref.POSITIVE_DONATE;
+        return Ref.POSITIVE_DISCORD;
     }
 
     @Override

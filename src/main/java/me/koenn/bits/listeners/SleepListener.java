@@ -32,7 +32,7 @@ public class SleepListener implements Listener {
         }
 
         Bukkit.getServer().getOnlinePlayers().forEach(p -> p.sendMessage(
-                Ref.MSG_SLEEPING
+                Ref.NEUTRAL_MSG_SLEEPING
                         .replace("{sleeping}", String.valueOf(this.sleeping))
                         .replace("{online}", String.valueOf(online))
         ));
